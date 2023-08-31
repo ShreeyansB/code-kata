@@ -21,13 +21,14 @@ app.post('/calcDecision', (req, res) => {
         console.log(validationResult)
 
         res.status(400).json({
-            message: myConstants.CALC_DECISION_SCHEMA_ERR_RESPONSE,
+            error: myConstants.CALC_DECISION_SCHEMA_ERR_RESPONSE,
             data: req.body
         })
     } else {
         const response = {
             isApproved: true,
-            loanAmount: calculateLoan(req.body.loanAmount, req.body.preAssessment)
+            loanAmount: calculateLoan(req.body.loanAmount, req.body.preAssessment),
+            preAssessment: req.body.preAssessment
         }
 
         res.send(response)

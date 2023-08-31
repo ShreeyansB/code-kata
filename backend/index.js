@@ -9,6 +9,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+// Utility Functions 
+
 function calcProfit12Months(balanceSheet) {
     const result = balanceSheet.slice(0, 12).reduce((accu, curr) => accu += curr.profitOrLoss, 0)
     return result
@@ -57,6 +59,8 @@ function calculateSummary(balanceSheet) {
     return summary
 }
 
+// Resuest Handlers
+
 app.get('/init', (req, res) => {
     console.log(`[${req.method}]`, 'Received init request');
 
@@ -69,7 +73,7 @@ app.get('/fetchBalSheet', async (req, res) => {
     const validationResult = schema.fetchBalSheetSchema.validate(req.query)
     if (validationResult.error) {
         res.status(400).json({
-            message: myConstants.FETCH_BAL_SCHEMA_ERR_RESPONSE,
+            error: myConstants.FETCH_BAL_SCHEMA_ERR_RESPONSE,
             data: req.query
         })
     } else {
@@ -81,9 +85,10 @@ app.get('/fetchBalSheet', async (req, res) => {
         }
 
         const response = await acHandler.getBalanceSheet(payload)
+        console.log(response)
 
         if (response.error) {
-            res.status(404).json(response.error)
+            res.status(400).json(response.error)
         } else {
             res.send(response)
         }
@@ -96,7 +101,7 @@ app.post('/fetchDecision', async (req, res) => {
     const validationResult = schema.fetchDecisionSchema.validate(req.body)
     if (validationResult.error) {
         res.status(400).json({
-            message: myConstants.FETCH_DECISION_SCHEMA_ERR_RESPONSE,
+            error: myConstants.FETCH_DECISION_SCHEMA_ERR_RESPONSE,
             data: req.body
         })
     } else {
@@ -123,7 +128,7 @@ app.post('/fetchDecision', async (req, res) => {
         const response = await decHandler.getDecision(payload)
 
         if (response.error) {
-            res.status(404).json(response.error)
+            res.status(400).json(response.error)
         } else {
             res.send(response)
         }

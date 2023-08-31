@@ -13,7 +13,7 @@ app.get('/balSheet', (req, res) => {
     const validationResult = schema.balSheetSchema.validate(req.query)
     if (validationResult.error) {
         res.status(400).json({
-            message: myConstants.BAL_SHEET_SCHEMA_ERR_RESPONSE,
+            error: myConstants.BAL_SHEET_SCHEMA_ERR_RESPONSE,
             data: req.query
         })
     } else {
