@@ -3,10 +3,10 @@
 Live Website: [demyst-shreeyans.netlify.app](https://demyst-shreeyans.netlify.app/)
 
 Project consists of:
-/demyst-website: React Wesbite to submit loan requests
-/backend: Backend API to handle requests from the website
-/accountingProvider: Mock API to serve balance sheets of a business
-/decisionEngine: Mock API to decide loan amounts
+- /demyst-website: React Wesbite to submit loan requests
+- /backend: Backend API to handle requests from the website
+- /accountingProvider: Mock API to serve balance sheets of a business
+- /decisionEngine: Mock API to decide loan amounts
 
 # Exercise
 
