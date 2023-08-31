@@ -1,4 +1,4 @@
-import { Box, Code, Text, VStack } from "@chakra-ui/react"
+import { Code, Text, VStack } from "@chakra-ui/react"
 
 function BalanceSheet(props) {
 
@@ -12,7 +12,6 @@ function BalanceSheet(props) {
         <>
             {props.bal &&
                 <Box>
-
                     <Text fontWeight={'semibold'}>Balance Sheet</Text>
                     <VStack spacing={'0.2rem'} align={'start'} width={{ base: '80vw', md: 'auto' }} overflowX={'auto'}>
                         {renderBalanceSheet()}
