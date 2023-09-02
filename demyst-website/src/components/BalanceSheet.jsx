@@ -1,4 +1,4 @@
-import { Code, Text, VStack } from "@chakra-ui/react"
+import { Code, Text, VStack , Box} from "@chakra-ui/react"
 
 function BalanceSheet(props) {
 
